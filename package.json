@@ -28,7 +28,7 @@
     },
     "scripts": {
         "install": "prebuild-install -r napi || node-gyp rebuild",
-        "prebuild": "prebuild --runtime napi --all --verbose",
+        "prebuild": "prebuild --runtime napi --verbose",
         "build": "node-gyp rebuild",
 		    "upload": "prebuild --verbose --upload-all",
         "test": "node test.js"
