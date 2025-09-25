@@ -1,0 +1,36 @@
+{
+    "name": "@fqlan/hello-world2",
+    "version": "0.0.1",
+    "description": "Hello world app packaged with prebuilds",
+    "main": "./index.js",
+    "author": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lanfungcing/hello-world2.git"
+    },
+    "binary": {
+        "napi_versions": [ 
+			6 
+		]
+    },
+	"files": [
+		"binding.gyp",
+		"src/hello.c",
+		"index.js"
+	],
+    "dependencies": {
+        "prebuild-install": "^7.1.3",
+        "bindings": "^1.5.0",
+        "node-gyp": "^11.3.0"
+    },
+    "devDependencies": {
+         "prebuild": "^13.0.1"
+    },
+    "scripts": {
+        "install": "prebuild-install -r napi || node-gyp rebuild",
+        "prebuild": "prebuild --runtime napi --all --verbose",
+        "build": "node-gyp rebuild",
+		    "upload": "prebuild --verbose --upload-all",
+        "test": "node test.js"
+    }
+}
