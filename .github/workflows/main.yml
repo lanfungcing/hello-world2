@@ -37,19 +37,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Add env vars
-        shell: bash
-        run: |
-          echo "V=1" >> $GITHUB_ENV
-
-          if [ "${{ matrix.arch }}" = "x86" ]; then
-            echo "ARCH=ia32" >> $GITHUB_ENV
-          else
-            echo "ARCH=${{ matrix.arch }}" >> $GITHUB_ENV
-          fi
-
       - name: Build binaries
-        run: npm run prebuild -a ${{ env.ARCH }}
+        run: npm run prebuild -a ${{ matrix.arch }}
 
       - name: Run tests
         run: npm test
